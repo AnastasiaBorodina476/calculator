@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-# Основная программа (тут 4 файла)
+# Основная программа
 add_executable(calc
     main.cpp
     Parser.cpp
@@ -17,7 +17,7 @@ if(NOT WIN32)
     target_link_libraries(calc PRIVATE dl)
 endif()
 
-# Плагины (без папки out, без .h файлов!)
+# Плагины
 add_library(funcsin SHARED sin.cpp)
 add_library(funcdeg SHARED deg.cpp)
 add_library(funcln SHARED ln.cpp)
