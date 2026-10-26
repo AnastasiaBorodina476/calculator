@@ -1,17 +1,16 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include <clocale>
-#include "Calculator.h" // <--- Меняем Parser на Calculator
+#include "Calculator.h"
 
 using namespace std;
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    cout << "=== Калькулятор с плагинами (C++20) ===\n";
 
     {
-        Calculator calc; // <--- Создаем Калькулятор
-        calc.loadPlugins("./plugins"); // <--- Он внутри себя загрузит плагины
+        Calculator calc;
+        calc.loadPlugins("./plugins");
 
         string line;
         while (true) {
@@ -20,15 +19,15 @@ int main() {
             if (line == "exit") break;
             if (line.empty()) continue;
             try {
-                // Передаем строку в Калькулятор, а не в Парсер напрямую
                 cout << "= " << calc.evaluate(line) << "\n";
             }
             catch (const exception& e) {
-                cout << "Ошибка: " << e.what() << "\n";
+                cout << "РћС€РёР±РєР°: " << e.what() << "\n";
             }
         }
     }
 
-    cout << "Выход из программы.\n";
+    cout << "Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.\n";
     return 0;
 }
+// Р’РµС‚РєР° dev РіРѕС‚РѕРІР° Рє СЃРґР°С‡Рµ

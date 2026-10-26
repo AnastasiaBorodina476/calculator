@@ -1,4 +1,4 @@
-#include "Parser.h"
+п»ї#include "Parser.h"
 #include <cctype>
 #include <stdexcept>
 #include <cmath>
@@ -16,7 +16,7 @@ void Parser::skip() {
 double Parser::parse() {
     double r = expr();
     skip();
-    if (pos != s.size()) throw runtime_error("Лишние символы");
+    if (pos != s.size()) throw runtime_error("Р›РёС€РЅРёРµ СЃРёРјРІРѕР»С‹");
     return r;
 }
 
@@ -41,7 +41,7 @@ double Parser::term() {
         if (pos < s.size() && (s[pos] == '*' || s[pos] == '/')) {
             char op = s[pos++];
             double rhs = factor();
-            if (op == '/' && rhs == 0) throw runtime_error("Деление на ноль");
+            if (op == '/' && rhs == 0) throw runtime_error("Р”РµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ");
             r = (op == '*') ? r * rhs : r / rhs;
         }
         else break;
@@ -60,7 +60,7 @@ double Parser::factor() {
 
 double Parser::primary() {
     skip();
-    if (pos >= s.size()) throw runtime_error("Конец выражения");
+    if (pos >= s.size()) throw runtime_error("РљРѕРЅРµС† РІС‹СЂР°Р¶РµРЅРёСЏ");
 
     if (s[pos] == 'e' && (pos + 1 == s.size() || !isalnum(s[pos + 1]))) {
         pos++; return std::numbers::e;
@@ -73,7 +73,7 @@ double Parser::primary() {
         pos++;
         double v = expr();
         skip();
-        if (pos >= s.size() || s[pos] != ')') throw runtime_error("Ожидалась ')'");
+        if (pos >= s.size() || s[pos] != ')') throw runtime_error("РћР¶РёРґР°Р»Р°СЃСЊ ')'");
         pos++;
         return v;
     }
@@ -89,14 +89,14 @@ double Parser::primary() {
         while (pos < s.size() && (isalnum(s[pos]) || s[pos] == '_')) pos++;
         string name = s.substr(start, pos - start);
         skip();
-        if (pos >= s.size() || s[pos] != '(') throw runtime_error("Ожидалась '('");
+        if (pos >= s.size() || s[pos] != '(') throw runtime_error("РћР¶РёРґР°Р»Р°СЃСЊ '('");
         pos++;
         double arg = expr();
         skip();
-        if (pos >= s.size() || s[pos] != ')') throw runtime_error("Ожидалась ')'");
+        if (pos >= s.size() || s[pos] != ')') throw runtime_error("РћР¶РёРґР°Р»Р°СЃСЊ ')'");
         pos++;
 
         return callPlugin(name, arg);
     }
-    throw runtime_error("Неизвестный символ");
+    throw runtime_error("РќРµРёР·РІРµСЃС‚РЅС‹Р№ СЃРёРјРІРѕР»");
 }

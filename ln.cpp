@@ -1,4 +1,4 @@
-#include <cmath>
+п»ї#include <cmath>
 #include <stdexcept>
 #include "IPlugin.h"
 
@@ -7,6 +7,6 @@ const char* getFunctionName() {
 }
 
 double calculate(double arg) {
-    if (arg <= 0) throw std::runtime_error("ln от неположительного числа");
+    if (arg <= 0) throw std::runtime_error("ln РѕС‚ РЅРµРїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРіРѕ С‡РёСЃР»Р°");
     return std::log(arg);
 }
