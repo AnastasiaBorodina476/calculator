@@ -1,8 +1,8 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <map>
 #include <vector>
-
+ 
 class PluginManager {
 public:
     PluginManager();

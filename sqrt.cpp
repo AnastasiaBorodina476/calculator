@@ -1,12 +1,12 @@
-#include <cmath>
+п»ї#include <cmath>
 #include <stdexcept>
 #include "IPlugin.h"
 
 const char* getFunctionName() { 
     return "sqrt"; 
 }
-
+ 
 double calculate(double arg) {
-    if (arg < 0) throw std::runtime_error("sqrt от отрицательного числа");
+    if (arg < 0) throw std::runtime_error("sqrt РѕС‚ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ С‡РёСЃР»Р°");
     return std::sqrt(arg);
 }

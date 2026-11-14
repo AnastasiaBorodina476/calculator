@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <functional>
-
+ 
 class Parser {
 public:
     using PluginCaller = std::function<double(const std::string&, double)>;
+
     Parser(const std::string& s, PluginCaller caller);
     double parse();
 
@@ -18,4 +19,7 @@ private:
     double term();
     double factor();
     double primary();
+
+    double parseNumber();
+    double parseFunction();
 };

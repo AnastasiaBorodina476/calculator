@@ -1,4 +1,4 @@
-#include "PluginManager.h"
+ï»¿#include "PluginManager.h"
 #include <iostream>
 #include <filesystem>
 
@@ -25,7 +25,7 @@ PluginManager::~PluginManager() {
 
 void PluginManager::loadPlugins(const string& folder) {
     if (!fs::exists(folder)) {
-        cout << "Ïàïêà " << folder << " íå íàéäåíà\n";
+        cout << "ÐŸÐ°Ð¿ÐºÐ° " << folder << " Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°\n";
         return;
     }
     for (auto& e : fs::directory_iterator(folder)) {
@@ -44,7 +44,7 @@ void PluginManager::loadPlugins(const string& folder) {
         auto calc = (double(*)(double))dlsym(lib, "calculate");
 #endif
         if (!getName || !calc) {
-            cout << "Íåêîððåêòíàÿ dll: " << path << "\n";
+            cout << "ÐÐµÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð°Ñ dll: " << path << "\n";
 #ifdef _WIN32
             FreeLibrary((HMODULE)lib);
 #else
@@ -55,14 +55,14 @@ void PluginManager::loadPlugins(const string& folder) {
         string name = getName();
         functions[name] = calc;
         loadedLibs.push_back(lib);
-        cout << "Çàãðóæåíî: " << name << "\n";
+        cout << "Ð—Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½Ð¾: " << name << "\n";
     }
 }
 
 bool PluginManager::hasFunction(const string& name) const {
     return functions.find(name) != functions.end();
 }
-
+ 
 double PluginManager::call(const string& name, double arg) const {
     return functions.at(name)(arg);
 }

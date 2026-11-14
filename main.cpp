@@ -1,8 +1,8 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <string>
 #include <clocale>
 #include "Calculator.h"
-
+ 
 using namespace std;
 
 int main() {
@@ -21,11 +21,11 @@ int main() {
                 cout << "= " << calc.evaluate(line) << "\n";
             }
             catch (const exception& e) {
-                cout << "Îøèáêà: " << e.what() << "\n";
+                cout << "ÐžÑˆÐ¸Ð±ÐºÐ°: " << e.what() << "\n";
             }
         }
     }
 
-    cout << "Âûõîä èç ïðîãðàììû.\n";
+    cout << "Ð’Ñ‹Ñ…Ð¾Ð´ Ð¸Ð· Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹.\n";
     return 0;
 }
